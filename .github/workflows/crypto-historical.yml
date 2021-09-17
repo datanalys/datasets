@@ -17,33 +17,6 @@ on:
         description: 'Test scenario tags'  
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
-jobs:
-  create_files:
-    name: Create Files
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-      - name: Build the data and create local changes
-        uses: actions/setup-python@v1
-        with:
-          python-version: '3.9.7'
-          architecture: x64
-      - run: |
-          pip install -r scripts/requirements.txt
-          python scripts/currencies/create-files.py
-      - name: Commit files
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git commit --allow-empty -m "created empty files" -a
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.datascience }}
           
   update:
     needs: [create_files]
@@ -68,34 +41,6 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git commit --allow-empty -m "Auto-update of the data packages" -a
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.datascience }}
-          
-  delete_files:
-    needs: [update]
-    name: Delete Files
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-      - name: Build the data and create local changes
-        uses: actions/setup-python@v1
-        with:
-          python-version: '3.9.7'
-          architecture: x64
-      - run: |
-          pip install -r scripts/requirements.txt
-          python scripts/currencies/delete-files.py
-      - name: Commit files
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git commit --allow-empty -m "deleted empty files" -a
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
