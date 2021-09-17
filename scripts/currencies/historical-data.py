@@ -5,6 +5,7 @@ import pandas as pd
 from datetime import datetime
 import time
 import numpy as np
+from pathlib import Path
 
 # return the current date in the format year-month-day
 def get_date():
@@ -16,6 +17,7 @@ def get_date():
 def create_file(currency_name):
     print("Creting File...")
     file_name = 'datasets/currencies/crypto/historical/' + currency_name + '.csv'
+    Path(file_name).touch()
     print("File Created: datasets/currencies/crypto/historical/", currency_name)
     return file_name
 
@@ -60,7 +62,6 @@ for c in currencies:
         df = pd.json_normalize(data)
         if(len(df.index) > 1):
             file_path = create_file(c)
-            f = open(file_path, "a")
             df.to_csv(file_path, sep=',')
     time.sleep(1.3) # Sleep for 1 seconds
 
