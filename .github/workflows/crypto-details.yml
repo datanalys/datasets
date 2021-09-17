@@ -2,11 +2,7 @@ name: Crypto | Details
 
 # Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+  # Triggers the workflow on schedule
   schedule:
     - cron:  '0 3 1 * *'
 
