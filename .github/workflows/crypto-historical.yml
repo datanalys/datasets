@@ -19,6 +19,7 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   create_files:
+    name: Create Files
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -45,6 +46,8 @@ jobs:
           github_token: ${{ secrets.datascience }}
           
   update:
+    needs: [create_files]
+    name: Get Historical Data
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -71,6 +74,8 @@ jobs:
           github_token: ${{ secrets.datascience }}
           
   delete_files:
+    needs: [update]
+    name: Delete Files
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
