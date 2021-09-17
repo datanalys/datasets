@@ -17,7 +17,6 @@ def get_date():
 def create_file(currency_name):
     print("Creting File...")
     file_name = 'datasets/currencies/crypto/historical/' + currency_name + '.csv'
-    Path(file_name).touch()
     print("File Created: datasets/currencies/crypto/historical/", currency_name)
     return file_name
 
