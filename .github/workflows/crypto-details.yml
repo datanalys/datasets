@@ -1,6 +1,4 @@
-# This is a basic workflow to help you get started with Actions
-
-name: Lirarate
+name: Crypto | Details
 
 # Controls when the workflow will run
 on:
@@ -10,7 +8,7 @@ on:
   pull_request:
     branches: [ main ]
   schedule:
-    - cron:  '*/60 * * * *'
+    - cron:  '0 3 1 * *'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -40,7 +38,7 @@ jobs:
           architecture: x64
       - run: |
           pip install -r scripts/requirements.txt
-          python scripts/lirarate.py
+          python scripts/currencies/crypto-details.py
       - name: Commit files
         run: |
           git config --local user.email "action@github.com"
@@ -60,5 +58,3 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-      
-      
