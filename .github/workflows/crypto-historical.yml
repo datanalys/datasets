@@ -33,7 +33,7 @@ jobs:
           architecture: x64
       - run: |
           pip install -r scripts/requirements.txt
-          python scripts/currencies/create_files.py
+          python scripts/currencies/create-files.py
       - name: Commit files
         run: |
           git config --local user.email "action@github.com"
@@ -85,7 +85,7 @@ jobs:
           architecture: x64
       - run: |
           pip install -r scripts/requirements.txt
-          python scripts/currencies/delete_files.py
+          python scripts/currencies/delete-files.py
       - name: Commit files
         run: |
           git config --local user.email "action@github.com"
