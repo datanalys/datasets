@@ -59,7 +59,9 @@ for c in currencies:
         data = json.loads(response.text)
         df = pd.json_normalize(data)
         if(len(df.index) > 1):
-            df.to_csv(create_file(c), sep=',')
+            file_path = create_file(c)
+            f = open(file_path, "a")
+            df.to_csv(file_path, sep=',')
     time.sleep(1.3) # Sleep for 1 seconds
 
 
