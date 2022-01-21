@@ -32,7 +32,7 @@ jobs:
       - name: Build the data and create local changes
         uses: actions/setup-python@v1
         with:
-          python-version: '3.9.7'
+          python-version: '3.9.9'
           architecture: x64
       - run: |
           pip install -r scripts/requirements.txt
