@@ -37,7 +37,7 @@ jobs:
           architecture: x64
       - run: |
           pip install -r scripts/requirements.txt
-          python scripts/lirarate.py
+          python scripts/lebanon/lirarate.py
       - name: Commit files
         run: |
           git config --local user.email "action@github.com"
@@ -63,7 +63,7 @@ jobs:
           architecture: x64
       - run: |
           pip install -r scripts/requirements.txt
-          python scripts/omt.py
+          python scripts/lebanon/omt.py
       - name: Commit files
         run: |
           git config --local user.email "action@github.com"
@@ -89,7 +89,7 @@ jobs:
           architecture: x64
       - run: |
           pip install -r scripts/requirements.txt
-          python scripts/sayrafa.py
+          python scripts/lebanon/sayrafa.py
       - name: Commit files
         run: |
           git config --local user.email "action@github.com"
