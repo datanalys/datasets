@@ -3,6 +3,7 @@ from os import sep
 import pandas as pd
 import requests
 import os
+import check_api
 
 print("all necessary packages are imported!")
 print()
@@ -19,19 +20,9 @@ date_batch = str(year) + str(month) + str(day)
 # add the the 1st part of the version batch to the base url
 base_url = base_url + date_batch
 
-# find the wordpress batch request number
-for i in range(30, 0, -1):
-    test_base_url = base_url + str(i)
-    request = requests.get(test_base_url)
-    print(test_base_url, request)
-    if request.status_code == 200:
-        base_url = test_base_url
-        break
-
-print("request call: ", base_url)
-
 # create the request
-request = requests.get(base_url)
+request = check_api.get_request(base_url)
+
 
 # get request results
 result = request.json()['sayrafa']
